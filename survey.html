@@ -1,0 +1,245 @@
+<!--Sai Sanjana Kambalapally-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>CS Department Survey</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Bootstrap 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/csdept.css">
+</head>
+<body class="bg-light">
+
+  <!-- Header -->
+  <header class="header-box container my-4">
+    <h1 class="mb-0">Computer Science Department Survey</h1>
+  </header>
+
+  <main class="container pb-5">
+    <!-- Greetings Message -->
+    <div id="greeting" class="alert alert-info my-3"></div>
+
+    <p class="lead">
+      Thank you for visiting the Computer Science Department at George Mason University!
+      Please provide your feedback about your campus visit. All fields marked with <span class="text-warning">*</span> are required.
+    </p>
+
+    <div class="card shadow-sm">
+      <div class="card-header bg-gmu-yellow">
+        <h2 class="h5 mb-0 text-dark">Tell us about your visit</h2>
+      </div>
+      <div class="card-body">
+        <!-- Form without JS validation -->
+        <form action="#" autocomplete="on" role="form" aria-labelledby="formTitle">
+          <h3 id="formTitle" class="h5 text-success border-start ps-2 mb-3" style="border-left:6px solid #FFCC33;">Your Details</h3>
+
+          <div class="row g-3">
+            <!-- Full Name (required) -->
+            <div class="col-md-6">
+              <label for="username" class="form-label required-label">Full Name</label>
+              <input type="text" class="form-control" id="username" name="username"
+                     placeholder="e.g., John Doe" required autofocus>
+            </div>
+
+            <!-- Email (required) -->
+            <div class="col-md-6">
+              <label for="email" class="form-label required-label">Email</label>
+              <input type="email" class="form-control" id="email" name="email"
+                     placeholder="example@email.com" required>
+            </div>
+
+            <!-- Optional fields -->
+            <!-- Street Address -->
+            <div class="col-md-6">
+              <label for="address" class="form-label">Street Address</label>
+              <input type="text" class="form-control" id="address" name="address"
+                     placeholder="123 Main Street, Apt 101">
+            </div>
+
+            <!-- Zip (required) -->
+            <div class="col-md-4">
+              <label for="zip" class="form-label">Zip</label>
+              <input type="text" class="form-control" id="zip" name="zip"
+                     placeholder="22030" onblur="lookupZip()" required>
+              <small id="zipError" class="text-danger"></small>
+            </div>
+
+            <!-- City -->
+            <div class="col-md-3">
+              <label class="form-label">City</label>
+              <div id="city" class="form-control readonly-field"></div>
+            </div>
+
+            <!-- State -->
+            <div class="col-md-3">
+              <label class="form-label">State</label>
+              <div id="state" class="form-control readonly-field"></div>
+            </div>
+
+
+            <!-- phone -->
+            <div class="col-md-4">
+              <label for="phone" class="form-label">Telephone</label>
+              <input type="tel" class="form-control" id="phone" name="phone"
+                     placeholder="123-456-7890">
+            </div>
+
+            <!-- LinkedIn link -->
+            <div class="col-md-4">
+              <label for="website" class="form-label">LinkedIn link</label>
+              <input type="url" class="form-control" id="website" name="website"
+                     placeholder="https://linkedin.com/name">
+            </div>
+
+            <!-- Date of Survey (required) -->
+            <div class="col-md-6">
+              <label for="surveyDate" class="form-label required-label">Date of Survey</label>
+              <input type="date" class="form-control" id="surveyDate" name="surveyDate" required>
+            </div>
+
+            <!-- Graduation month -->
+            <div class="col-md-3">
+              <label for="gradMonth" class="form-label">High School Graduation Month</label>
+              <input class="form-control" list="months" id="gradMonth" name="gradMonth" placeholder="Start typing...">
+              <datalist id="months">
+                <option value="January"><option value="February"><option value="March">
+                <option value="April"><option value="May"><option value="June">
+                <option value="July"><option value="August"><option value="September">
+                <option value="October"><option value="November"><option value="December">
+              </datalist>
+            </div>
+
+            <!-- Graduation year -->
+            <div class="col-md-3">
+              <label for="gradYear" class="form-label">High School Graduation Year</label>
+              <input type="number" class="form-control" id="gradYear" name="gradYear"
+                     placeholder="2026" min="1980" max="2100" step="1">
+            </div>
+          </div>
+
+          <hr class="my-4 divider-yellow">
+
+          <!-- Data Input -->
+          <h3 class="h5 text-success mb-2">Average and Maximum Computation</h3>
+          <div class="row g-3 mt-3">
+              <div class="col-md-6">
+                  <label for="dataInput" class="form-label">Data (10 numbers, comma separated)</label>
+                  <input type="text" class="form-control" id="dataInput" placeholder="e.g., 12,45,67,23,89,34,56,78,90,11">
+              </div>
+
+              <div class="col-md-3">
+                  <label for="average" class="form-label">Average</label>
+                  <input type="text" class="form-control" id="average" readonly>
+              </div>
+            
+              <div class="col-md-3">
+                  <label for="maximum" class="form-label">Maximum</label>
+                  <input type="text" class="form-control" id="maximum" readonly>
+              </div>
+          </div>
+
+          <hr class="my-4 divider-yellow">
+          <!-- Campus likes (checkboxes) -->
+          <h3 class="h5 text-success mb-2  required-label">What did you like most about the campus?</h3>
+          <div class="row">
+            <div class="col-12 col-md-6">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="like_students" name="likes" value="students">
+                <label class="form-check-label" for="like_students">Students</label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="like_location" name="likes" value="location">
+                <label class="form-check-label" for="like_location">Location</label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="like_campus" name="likes" value="campus">
+                <label class="form-check-label" for="like_campus">Campus</label>
+              </div>
+            </div>
+            <div class="col-12 col-md-6">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="like_atmosphere" name="likes" value="atmosphere">
+                <label class="form-check-label" for="like_atmosphere">Atmosphere</label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="like_dorms" name="likes" value="dorm rooms">
+                <label class="form-check-label" for="like_dorms">Dorm Rooms</label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="like_sports" name="likes" value="sports">
+                <label class="form-check-label" for="like_sports">Sports</label>
+              </div>
+            </div>
+          </div>
+
+          <hr class="my-4 divider-yellow">
+
+          <!-- Interest source (radios) -->
+          <h3 class="h5 text-success mb-2 required-label">How did you become interested in the university?</h3>
+          <div class="row">
+            <div class="col-12 col-md-6">
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="interest" id="int_friends" value="friends">
+                <label class="form-check-label" for="int_friends">Friends</label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="interest" id="int_tv" value="television">
+                <label class="form-check-label" for="int_tv">Television</label>
+              </div>
+            </div>
+            <div class="col-12 col-md-6">
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="interest" id="int_internet" value="internet">
+                <label class="form-check-label" for="int_internet">Internet</label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="interest" id="int_other" value="other">
+                <label class="form-check-label" for="int_other">Other</label>
+              </div>
+            </div>
+          </div>
+
+          <!-- Likelihood dropdown -->
+          <label for="recommend" class="form-label required-label">Likelihood of recommending this school</label>
+          <select id="recommend" name="recommend" class="form-select" required>
+            <option value="" selected disabled>Choose...</option>
+            <option value="Very Likely">Very Likely</option>
+            <option value="Likely">Likely</option>
+            <option value="Unlikely">Unlikely</option>
+          </select>
+
+          <!-- Comments -->
+          <div class="mt-4">
+            <label for="comments" class="form-label">Additional Comments</label>
+            <textarea id="comments" name="comments" class="form-control" rows="4"
+                      placeholder="Share anything else you'd like us to know..."></textarea>
+          </div>
+
+          <!-- Submit & Reset buttons -->
+          <div class="text-center mt-4">
+            <button type="button" class="btn btn-gmu-green btn-lg px-4" onclick="validateFormOnClick()">Submit Survey</button>
+            <button type="button" class="btn btn-secondary btn-lg px-4 ms-3" onclick="resetForm()">Reset Form</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Back link -->
+    <div class="text-center mt-4">
+      <a href="/csdept.html" class="link-dark fw-semibold">← Back to CS Department Info</a>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="text-center p-3 bg-success text-white">
+    <p>© <span id="year">2025</span> George Mason University - CS Department</p>
+    <p>Sai Sanjana Kambalapally</p>
+  </footer>
+
+<script src="js/survey.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,98 @@
+/* Sai Sanjana Kambalapally */
+
+/* Font setup */
+body, h1, h2, h3, h4, h5 {
+  font-family: 'Raleway', sans-serif;
+}
+
+/* Prevent navbar overlap on anchor links */
+html {
+  scroll-padding-top: 90px;
+}
+
+/* Hero section */
+.hero {
+  position: relative;
+  margin-top: 56px; /* account for fixed navbar */
+}
+.hero-bg {
+  width: 100%;
+  height: 350px;
+  object-fit: cover;
+  filter: saturate(90%);
+}
+.hero-content {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  color: white;
+  background: rgba(0,0,0,0.4);
+  padding: 10px 20px;
+  border-radius: 6px;
+}
+.hero-content h1 {
+  font-size: 1.8rem;
+  margin: 0;
+}
+.hero-content p {
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+/* About section */
+.about-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 24px rgba(0,0,0,0.15) !important;
+  transition: all 0.3s ease;
+}
+.profile-img-container {
+  overflow: hidden;
+  border-radius: 50%;
+  display: inline-block;
+}
+.profile-img {
+  max-width: 220px;
+  transition: transform 0.3s ease;
+}
+.profile-img-container:hover .profile-img {
+  transform: scale(1.05) rotate(2deg);
+}
+
+/* Skill badges */
+.skills-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 12px;
+}
+.badge {
+  background-color: #d9d9d9;
+  color: #333;
+  border-radius: 20px;
+  padding: 6px 12px;
+  font-size: 0.9rem;
+  transition: all 0.2s ease;
+}
+.badge:hover {
+  background-color: #cfcfcf;
+  transform: translateY(-2px);
+}
+
+/* Contact section */
+.contact-item {
+  margin-bottom: 10px;
+  font-size: 1rem;
+}
+
+/* Responsive tweaks */
+@media (max-width: 768px) {
+  .hero-bg {
+    height: 250px;
+  }
+  .hero-content h1 {
+    font-size: 1.2rem;
+  }
+  .hero-content p {
+    font-size: 0.9rem;
+  }
+}
