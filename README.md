@@ -28,6 +28,7 @@ This project is an interactive front-end website developed using HTML5, CSS3, Bo
 
 ## Deployment
 The application is deployed as a static website using AWS S3.
+http://sanjanasweassignment2.s3-website-us-east-1.amazonaws.com/
 
 ## Author
 Sai Sanjana Kambalapally
